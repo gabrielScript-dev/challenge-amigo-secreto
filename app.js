@@ -10,6 +10,10 @@ function validarCampo(entrada) {
     return entrada == '' ? false : true;
 }
 
+function validarSorteio() {
+    return listaAmigos.length != 0 && listaAmigos.length >= 2;
+}
+
 function exibirListaAmigos(nome) {
     outListaAmigos.innerHTML += `<li>${nome}</li>`;
 }
@@ -35,8 +39,11 @@ function adicionarAmigo() {
 
 function sortearAmigo() {
     
-    const i = parseInt(Math.random() * listaAmigos.length);
-    const amigoSorteado = listaAmigos[i];
-
-    exibirResultado(amigoSorteado);
+    if(validarSorteio()) {
+        const i = parseInt(Math.random() * listaAmigos.length);
+        const amigoSorteado = listaAmigos[i];
+        exibirResultado(amigoSorteado);
+    } else {
+        alert('Informe pelo menos dois nomes de amigos para iniciar o sorteio.');
+    }
 }
