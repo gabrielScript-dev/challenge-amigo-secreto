@@ -2,6 +2,14 @@ const listaAmigos = [];
 const outListaAmigos = document.getElementById('listaAmigos');
 const outResultado = document.getElementById('resultado');
 
+
+function validarCampo(entrada) {
+
+    entrada = entrada.trim();
+
+    return entrada == '' ? false : true;
+}
+
 function exibirListaAmigos(nome) {
     outListaAmigos.innerHTML += `<li>${nome}</li>`;
 }
@@ -16,8 +24,13 @@ function adicionarAmigo() {
     const inAmigo = document.getElementById('amigo');
     const nomeAmigo = inAmigo.value;
 
-    listaAmigos.push(nomeAmigo);
-    exibirListaAmigos(nomeAmigo);
+    if(validarCampo(nomeAmigo)) {
+        listaAmigos.push(nomeAmigo);
+        exibirListaAmigos(nomeAmigo);
+    } else {
+        alert('Informe algum nome válido no campo');
+    }
+
 }
 
 function sortearAmigo() {
